@@ -29,17 +29,19 @@ function App() {
         <Navbar />
         {/* Dùng </Switch> để chạy case tương ứng */}
         <Switch>
-          {/* trang chủ - dai dien cho localhost:3000 */}
+          {showMenuHome(routesHome)}
+          {/* trang chủ - dai dien cho localhost:3000
           {/* Dùng exact để define / là Home */}
-          <Route exact path="/" component={Home} />
-          <Route path="/Home" component={Home} />
+          {/* <Route exact path="/" component={Home} /> */}
+          {/* <Route path="/Home" component={Home} /> */}
           {/* <HomeRedux /> */}
           {/* trang about */}
           {/* About vẫn đi qua Home nên 2 trang bị chồng nhau */}
-          <Route path="/about" component={About} />
-          <Route path="/list-movies" component={ListMovie} />
+          {/* <Route path="/about" component={About} /> */}
+          {/* <Route path="/list-movies" component={ListMovie} /> */}
+          
           {/*Case default => Nên để Route not found cuối cùng */}
-          <Route path="" component={PageNotFound} />
+          <Route path="" component={PageNotFound} /> */}
         </Switch>
         <hr />
       </div>
