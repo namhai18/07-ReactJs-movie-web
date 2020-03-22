@@ -7,13 +7,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery/dist/jquery.min.js";
 import "popper.js/dist/umd/popper.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
+
 import {createStore} from "redux";
+// connect redux vs react
 import {Provider} from "react-redux";
 import rootReducer from "./redux/reducers/index"
 
 // Ket noi store chứa và reducer
 const store = createStore(
   rootReducer,
+  // kiểm tra redux trên trình duyệt
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
