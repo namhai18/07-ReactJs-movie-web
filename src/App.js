@@ -1,10 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import HomeRedux from './user-managerment-redux/Home'
 
 function App() {
   return (
     <div className="App">
+      <HomeRedux />
+      <hr />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
