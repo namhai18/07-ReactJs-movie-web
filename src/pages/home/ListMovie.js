@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
 import Axios from "axios";
 import Movies from '../../components/Movies';
+import {connect} from "react-redux";
+import * as action from "./../../redux/action/index"
+class ListMovie extends Component {
 
-export default class ListMovie extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            listMovie: []
-        };
-    }
     componentDidMount() {
         console.log("componentDidMount");
         Axios({
@@ -17,17 +12,18 @@ export default class ListMovie extends Component {
             method: 'GET'
         }).then(rs => {
             console.log(rs.data);
-            this.setState({
-                listMovie: rs.data
-            })
+            this.props.getListMovie(rs.data);
+            // this.setState({
+            //     listMovie: rs.data
+            // })
         }).catch(error => {
             console.log(error)
         })
     }
 
     renderHTML = () => {
-        return this.state.listMovie.map((movie) => {
-            return <Movies key={movie.maPhim} />
+        return this.props.listMovie.map((movie) => {
+            return <Movies key={movie.maPhim} movie={movie} />
         })
     }
 
@@ -41,3 +37,24 @@ export default class ListMovie extends Component {
         )
     }
 }
+
+const mapStateToProps = state =>{
+    return {
+        // ten props chinh la listMovie luon (state tren redux cung ten la listMovie)
+      listMovie: state.movieReducer.listMovie
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getListMovie: (listMovie) => {
+        //   let action = {
+        //     type: "GET_LIST_MOVIE",
+        //     data: listMovie
+        //   };
+          dispatch(action.getListMovies(listMovie));
+        }
+      }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (ListMovie);
