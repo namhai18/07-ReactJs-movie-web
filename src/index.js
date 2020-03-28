@@ -8,16 +8,24 @@ import "jquery/dist/jquery.min.js";
 import "popper.js/dist/umd/popper.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
 
-import {createStore} from "redux";
+import {createStore, applyMiddleware,compose} from "redux";
+import thunk from "redux-thunk";
+
+
+
 // connect redux vs react
 import {Provider} from "react-redux";
 import rootReducer from "./redux/reducers/index"
 
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+
 // Ket noi store chứa và reducer
 const store = createStore(
   rootReducer,
-  // kiểm tra redux trên trình duyệt
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  // kiểm tra redux trên trình duyệt- apply thunk vao
+  composeEnhancers(applyMiddleware(thunk))
   );
 
   ReactDOM.render(
