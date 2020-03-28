@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from "react-router-dom";
 
 export default class Movies extends Component {
     
@@ -12,7 +13,7 @@ export default class Movies extends Component {
                     <div className="card-body">
                         <h4 className="card-title">{movie.tenPhim}</h4>
                         <p className="card-text">{movie.biDanh}</p>
-                        
+                        <Link className="btn btn-success" to={`/detail-movie/${movie.maPhim}`}>Detail</Link>
                     </div>
                 </div>
             </div>
