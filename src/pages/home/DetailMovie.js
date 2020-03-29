@@ -105,7 +105,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(action.actGetDetailMovieAPI(id));
         },
         resetDetailMovie: ()=> {
-            dispatch(action.getListMovies())
+            dispatch(action.getListMovies({}))
         }
     }
 }
