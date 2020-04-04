@@ -7,18 +7,41 @@ import PageNotFound from "./pages/PageNotFound"
 // import logo from './logo.svg';
 // import './App.css';
 import HomeRedux from './user-managerment-redux/Home'
-import Navbar from './components/Navbar';
-import { routesHome } from './routes';
+import Admin from "./pages/admin/Admin";
+
+import { routesHome, routesAdmin } from './routes';
+import HomeTemplate from "./template/HomeTemplate";
+import AdminTemplate from './template/AdminTemplate';
 
 function App() {
 
   const showMenuHome = (routes) => {
     if (routes && routes.length > 0) {
       return routes.map((item, index) => {
-        return <Route key={index}
-          exact={item.exact}
-          path={item.path}
-          component={item.component} />
+        return (
+          // Đổi Home => Hometempalte
+          
+          <HomeTemplate
+            key={index}
+            exact={item.exact}
+            path={item.path}
+            Component={item.component} />
+        );
+      })
+    }
+  }
+
+  const showMenuAdmin = routes => {
+    if (routes && routes.length > 0) {
+      return routes.map((item, index) => {
+        return (
+          // Đổi Home => Hometempalte
+          <AdminTemplate
+            key={index}
+            exact={item.exact}
+            path={item.path}
+            Component={item.component} />
+        );
       })
     }
   }
@@ -26,10 +49,11 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <Navbar />
         {/* Dùng </Switch> để chạy case tương ứng */}
         <Switch>
           {showMenuHome(routesHome)}
+          {showMenuAdmin(routesAdmin)}
+          <Route exact={false} path="/admin" component={Admin} />
           {/* trang chủ - dai dien cho localhost:3000
           {/* Dùng exact để define / là Home */}
           {/* <Route exact path="/" component={Home} /> */}
@@ -39,7 +63,7 @@ function App() {
           {/* About vẫn đi qua Home nên 2 trang bị chồng nhau */}
           {/* <Route path="/about" component={About} /> */}
           {/* <Route path="/list-movies" component={ListMovie} /> */}
-          
+
           {/*Case default => Nên để Route not found cuối cùng */}
           <Route path="" component={PageNotFound} /> */}
         </Switch>

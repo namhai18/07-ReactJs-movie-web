@@ -3,6 +3,8 @@ import About from "./pages/home/About";
 import ListMovie from "./pages/home/ListMovie";
 import DetailMovie from "./pages/home/DetailMovie";
 import HOC from "./HOC";
+import Dashboard from "./pages/admin/Dashboard";
+import ThemNguoiDung from "./pages/admin/ThemNguoiDung";
 
 const routesHome = [
     {
@@ -40,4 +42,19 @@ const routesHome = [
     },
 ]
 
-export {routesHome};
+const routesAdmin = [
+    {
+        path: "/admin/dashboard",
+        // exact: true => giup the hien dau / la trang chu 
+        exact: false,
+        component: Dashboard
+    },
+    {
+        path: "/admin/them-nguoi-dung",
+        // exact: true => giup the hien dau / la trang chu 
+        exact: false,
+        component: ThemNguoiDung
+    },
+]
+
+export {routesHome,routesAdmin};
