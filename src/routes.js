@@ -5,13 +5,21 @@ import DetailMovie from "./pages/home/DetailMovie";
 import HOC from "./HOC";
 import Dashboard from "./pages/admin/Dashboard";
 import ThemNguoiDung from "./pages/admin/ThemNguoiDung";
+import HOOKS from "./HOOKS/index";
 
 const routesHome = [
+    
     {
         path: "/",
         // exact: true => giup the hien dau / la trang chu 
         exact: true,
         component: Home
+    },
+    {
+        path: "/hooks",
+        // exact: true => giup the hien dau / la trang chu 
+        exact: false,
+        component: HOOKS
     },
     {
         path: "/home",
