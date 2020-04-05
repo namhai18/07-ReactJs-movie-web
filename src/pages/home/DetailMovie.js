@@ -104,8 +104,9 @@ const mapDispatchToProps = dispatch => {
             //   };
             dispatch(action.actGetDetailMovieAPI(id));
         },
+        // truyền vào detail movie object rỗng, để clear detail movie data.
         resetDetailMovie: ()=> {
-            dispatch(action.getListMovies({}))
+            dispatch(action.actGetDetailMovie({}))
         }
     }
 }
